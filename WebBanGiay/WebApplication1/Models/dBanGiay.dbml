@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="webbangiay" Class="dBanGiayDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ANH\SQLEXPRESS;Initial Catalog=webbangiay;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="webbangiayConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ChiTietDat" Member="ChiTietDats">
+    <Type Name="ChiTietDat">
+      <Column Name="SoDH" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaGiay" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(9,2)" CanBeNull="true" />
+      <Column Name="ThanhTien" Type="System.Decimal" DbType="Decimal(20,2)" IsDbGenerated="true" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="DatHang_ChiTietDat" Member="DatHang" ThisKey="SoDH" OtherKey="SoDH" Type="DatHang" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="Giay_ChiTietDat" Member="Giay" ThisKey="MaGiay" OtherKey="MaGiay" Type="Giay" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhaSanXuat" Member="NhaSanXuats">
+    <Type Name="NhaSanXuat">
+      <Column Name="MaNhaSanXuat" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenNhaSanXuat" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="NhaSanXuat_Giay" Member="Giays" ThisKey="MaNhaSanXuat" OtherKey="MaNhaSanXuat" Type="Giay" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DatHang" Member="DatHangs">
+    <Type Name="DatHang">
+      <Column Name="SoDH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NgayDatHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DaGiao" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NgayGiaoHang" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TenNguoiNhan" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="DiaChiNhan" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DienThoaiNhan" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="HTThanhToan" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HTGiaoHang" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MaKhachHang" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="DatHang_ChiTietDat" Member="ChiTietDats" ThisKey="SoDH" OtherKey="SoDH" Type="ChiTietDat" />
+      <Association Name="KhachHang_DatHang" Member="KhachHang" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="KhachHang" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GopY" Member="Gopies">
+    <Type Name="GopY">
+      <Column Name="MaGopy" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NoiDungGopY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MaKhachHang" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="KhachHang_GopY" Member="KhachHang" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="KhachHang" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Giay" Member="Giays">
+    <Type Name="Giay">
+      <Column Name="MaGiay" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMau" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MaKichThuoc" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MaNhaSanXuat" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="MaLoai" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="TenGiay" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="HinhAnh" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MoTa" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="GiaBan" Type="System.Decimal" DbType="Decimal(9,3)" CanBeNull="true" />
+      <Column Name="NgayCapNhat" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Sale" Type="System.Decimal" DbType="Decimal(9,3)" CanBeNull="true" />
+      <Column Name="KhuyenMai" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Giay_ChiTietDat" Member="ChiTietDats" ThisKey="MaGiay" OtherKey="MaGiay" Type="ChiTietDat" />
+      <Association Name="NhaSanXuat_Giay" Member="NhaSanXuat" ThisKey="MaNhaSanXuat" OtherKey="MaNhaSanXuat" Type="NhaSanXuat" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="KichThuoc_Giay" Member="KichThuoc" ThisKey="MaKichThuoc" OtherKey="MaKichThuoc" Type="KichThuoc" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="LoaiGiay_Giay" Member="LoaiGiay" ThisKey="MaLoai" OtherKey="MaLoai" Type="LoaiGiay" IsForeignKey="true" DeleteRule="CASCADE" />
+      <Association Name="MauSac_Giay" Member="MauSac" ThisKey="MaMau" OtherKey="MaMau" Type="MauSac" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KichThuoc" Member="KichThuocs">
+    <Type Name="KichThuoc">
+      <Column Name="MaKichThuoc" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MoTaSize" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="KichThuoc_Giay" Member="Giays" ThisKey="MaKichThuoc" OtherKey="MaKichThuoc" Type="Giay" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KhachHang" Member="KhachHangs">
+    <Type Name="KhachHang">
+      <Column Name="MaKhachHang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="NgaySinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ID" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Pasword" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Association Name="KhachHang_DatHang" Member="DatHangs" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="DatHang" />
+      <Association Name="KhachHang_GopY" Member="Gopies" ThisKey="MaKhachHang" OtherKey="MaKhachHang" Type="GopY" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoaiGiay" Member="LoaiGiays">
+    <Type Name="LoaiGiay">
+      <Column Name="MaLoai" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenLoai" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="LoaiGiay_Giay" Member="Giays" ThisKey="MaLoai" OtherKey="MaLoai" Type="Giay" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LoginAdmin" Member="LoginAdmins">
+    <Type Name="LoginAdmin">
+      <Column Name="ID" Type="System.String" DbType="NChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PASWORD" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MauSac" Member="MauSacs">
+    <Type Name="MauSac">
+      <Column Name="MaMau" Type="System.String" DbType="Char(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenMau" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Association Name="MauSac_Giay" Member="Giays" ThisKey="MaMau" OtherKey="MaMau" Type="Giay" />
+    </Type>
+  </Table>
+</Database>

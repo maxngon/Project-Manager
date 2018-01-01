@@ -1,0 +1,123 @@
+﻿<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+    #DatMua a{
+        clear :both ; background-color:red;
+        color:white; width:120px; height:35px;
+        display:block; float:right;text-align:center;
+        padding-top:10px;   text-decoration:none; font-weight:bold;
+    }
+    #Datmua a:hover{
+     background-color:gray;
+     color:red;
+    }
+
+</style>
+@{
+    ViewBag.Title = "Chitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="text-align:left">Thông tin sản phẩm</h2>
+
+
+    <div class="col-sm-4 col-lg-4 col-md-4" style="text-align:left">
+        <div class="thumbnail">
+            <img alt="@Model.TenGiay" src="~/img/@Model.HinhAnh" height="300" width="330" />
+
+
+        </div>
+
+       
+
+        
+       
+    </div>
+
+    <div>
+        <br />
+        <h4 style="text-align:left">
+            Mã giày: @Model.MaGiay
+
+        </h4>
+        <h4 style="text-align:left">
+           Tên giày: @Model.TenGiay
+
+        </h4>
+        <h4 style="text-align:left">
+         Nhà sản xuất :@Model.NhaSanXuat.TenNhaSanXuat
+
+        </h4>
+        <h4 style="text-align:left">
+          @Model.LoaiGiay.TenLoai
+
+        </h4>
+        <hr />
+        <p></p>
+    </div>
+<div>
+    <h4 style="text-align: left ">
+        Màu:
+
+
+        @Model.MauSac.TenMau
+
+        <br />
+
+        Size:
+        @Model.KichThuoc.MaKichThuoc
+
+        <br />
+        Mô tả size:
+        @Model.KichThuoc.MoTaSize
+    </h4>
+    <p></p>
+
+</div>
+    <div>
+        <h4 style="text-align: left ; color: #FF0000">
+            Giá  @Model.GiaBan VNĐ
+
+        </h4>
+        <p></p>
+
+    </div>
+   
+<div style="text-align:right">
+    <div id="Datmua">
+        <a href="@Url.Action("themgiohang","GioHang",new { @imagiay=int.Parse(@Model.MaGiay),@strUrl=Request.Url.ToString()})" style="font-size:24px">
+            Đặt Hàng <i class="fa fa-cart-plus"></i>
+        </a>
+    </div>
+</div>
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#Mota">Mô tả</a></li>
+    <li><a data-toggle="tab" href="#binhluan">Bình luận</a></li>
+</ul>
+<div class="tab-content">
+    <div id="Mota" class="tab-pane fade in active">
+        <p>@Model.MoTa</p>
+    </div>
+    <div id="binhluan" class="tab-pane fade">
+        <form role="form">
+            <div class="form-group">
+                <textarea class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <br><br>
+    </div>
+</div>
+ 
+
+
+
+
+    
+
+
+
+
+
+
+
+

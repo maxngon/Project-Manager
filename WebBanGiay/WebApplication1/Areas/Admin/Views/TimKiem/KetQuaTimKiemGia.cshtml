@@ -1,0 +1,91 @@
+﻿@using WebApplication1.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ChiTietDat>
+@{
+    ViewBag.Title = "KetQuaTimKiemGia";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+
+<h2>Kết quả tìm kiếm</h2>
+<h2 style="text-align:center;color:blue">@ViewBag.Thongbao</h2>
+<div class="page-wrapper">
+    @using (Html.BeginForm("KetQuaTimKiemGia", "TimKiem", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group custom-search-form">
+                    <p>Giá từ<input type="number" class="form-control" placeholder="Nhập giá từ" name="txtgiatu" required></p>
+                    <p>Giá đến<input type="number" class="form-control" placeholder="Nhập giá đến" name="txtgiaden" required></p>
+                    <br />
+                    <br />
+
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+            <!-- /input-group -->
+    }
+    <br />
+    <table width="100" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>
+                    Tên giày
+                </th>
+                <th>
+                    Số Lượng
+                </th>
+                <th>
+                    Đơn Giá
+                </th>
+                <th>
+                    Thành tiền
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="odd gradeX">
+
+                    <td>
+                        @item.Giay.TenGiay
+                    </td>
+                    <td>
+                        @item.SoLuong
+                    </td>
+                    <td>
+                        @item.DonGia VNĐ
+                    </td>
+
+                    <td>
+                        @item.ThanhTien VNĐ
+                    </td>
+                </tr>
+            }
+    </table>
+</div>
+<footer>
+    <div class="MenuTrang" style="text-align:center;">
+        trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action
+                      ("KetQuaTimKiemGia", new { page = page, @txtgiatu = ViewBag.TuKhoa, @txtgiaden = ViewBag.TuKhoa1 })) <br />
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
+</footer>
+
+
+
+
+

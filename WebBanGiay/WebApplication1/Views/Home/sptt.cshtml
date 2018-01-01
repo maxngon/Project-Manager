@@ -1,0 +1,23 @@
+﻿@model IEnumerable<WebApplication1.Models.Giay>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4" style="width:270px">
+            <div class="thumbnail " style="width:250px;">
+                <a href="@Url.Action("Chitiet", "Home", new { id = int.Parse(item.MaGiay) })">
+                    <img src="~/img/@item.HinhAnh" />
+                    <div>
+                     
+                        <h4 style="text-align:center">
+                            @item.TenGiay
+
+                        </h4>
+                        <p></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+    }
+
+

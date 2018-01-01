@@ -1,0 +1,246 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/phongto.css" rel="stylesheet" />
+    <script src="~/Scripts/phongto.js"></script>
+    <!-- import icon font awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Import thư viện JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        // kéo xuống khoảng cách 500px thì xuất hiện nút Top-up
+        var offset = 500;
+        // thời gian di trượt 0.75s ( 1000 = 1s )
+        var duration = 750;
+        $(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > offset)
+                    $('#top-up').fadeIn(duration); else
+                    $('#top-up').fadeOut(duration);
+            });
+            $('#top-up').click(function () {
+                $('body,html').animate({ scrollTop: 0 }, duration);
+            });
+        });
+    </script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <link href="~/Content/abc.css" rel="stylesheet" />  
+    <script type="text/javascript">
+        (function (d, s, id) {
+            var z = d.createElement(s); z.type = "text/javascript"; z.id = id; z.async = true; z.src = "//static.zotabox.com/a/b/ab0b95cb6a4d062fe3fb9c5c2036a5a6/widgets.js";
+            var sz = d.getElementsByTagName(s)[0]; sz.parentNode.insertBefore(z, sz)
+        }(document, "script", "zb-embed-code"))
+
+    </script>
+
+    <title>@ViewBag.Title Shop giày</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            /*width: 600px;*/
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div title="Về đầu trang" onmouseover="this.style.color='#590059'" onmouseout="this.style.color='#004993'" id="top-up">
+        <i class="fa fa-caret-square-o-up"></i>
+    </div>
+    <style>
+        #top-up {
+            background: none;
+            font-size: 3em;
+            text-shadow: 0px 0px 5px #c0c0c0;
+            cursor: pointer;
+            position: fixed;
+            z-index: 9999;
+            color: #004993;
+            bottom: 20px;
+            right: 15px;
+            display: none;
+        }
+    </style>
+     @*nut link*@
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.10&appId=1887981034804960";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    </script>
+   
+    <div class="navbar navbar-inverse navbar-fixed-top"style="background-color:lavender" >
+        <marquee style="color:red" ; bgcolor="#99ccee;">
+            ++ Chào mừng thầy đã ghé thăm web của Đức Anh  Mong thầy góp ý để web ngày càng phát triển ++
+        </marquee>
+      
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="@Url.Action("DangKy","nguoidung")" style="color:black"><span class="glyphicon glyphicon-user">  </span> Đăng Ký</a></li>
+            <li><a href="@Url.Action("DangNhap","nguoidung")" style="color:black"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+            <br/>
+            <li>@using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+            {
+                <div id="txttimkiem" class="navbafr-form navbar-right">
+                    <form class="navbar-form navbar-left">
+                        <input type="text" placeholder="Nhập từ khóa tìm kiếm" name="txttimkiem" style="height:35px">
+                        </form>
+                        <button type="submit" class="btn btn-info">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    <
+                </div>
+            }</li>
+        </ul>
+                    <div class="navbar-collapse collapse">
+                        <ul> </ul>
+                         <div style="font-size: 40px ; margin-left:550px;">
+                            <script type="text/javascript">
+                                farbbibliothek = new Array();
+                                farbbibliothek[0] = new Array("#FF0000", "#FF1100", "#FF2200", "#FF3300", "#FF4400", "#FF5500", "#FF6600", "#FF7700", "#FF8800", "#FF9900", "#FFaa00", "#FFbb00", "#FFcc00", "#FFdd00", "#FFee00", "#FFff00", "#FFee00", "#FFdd00", "#FFcc00", "#FFbb00", "#FFaa00", "#FF9900", "#FF8800", "#FF7700", "#FF6600", "#FF5500", "#FF4400", "#FF3300", "#FF2200", "#FF1100");
+
+                                farbbibliothek[1] = new Array("#FF0000", "#FF4000", "#FF8000", "#FFC000", "#FFFF00", "#C0FF00", "#80FF00", "#40FF00", "#00FF00", "#00FF40", "#00FF80", "#00FFC0", "#00FFFF", "#00C0FF", "#0080FF", "#0040FF", "#0000FF", "#4000FF", "#8000FF", "#C000FF", "#FF00FF", "#FF00C0", "#FF0080", "#FF0040");
+
+                                farben = farbbibliothek[1];
+                                function farbschrift() { for (var b = 0; b < Buchstabe.length; b++) { document.all["a" + b].style.color = farben[b] } farbverlauf() }
+                                function string2array(b) { Buchstabe = new Array(); while (farben.length < b.length) { farben = farben.concat(farben) } k = 0; while (k <= b.length) { Buchstabe[k] = b.charAt(k); k++ } }
+                                function divserzeugen() { for (var b = 0; b < Buchstabe.length; b++) { document.write("<span id='a" + b + "' class='a" + b + "'>" + Buchstabe[b] + "</span>") } farbschrift() } var a = 1;
+                                function farbverlauf() { for (var b = 0; b < farben.length; b++) { farben[b - 1] = farben[b] } farben[farben.length - 1] = farben[-1]; setTimeout("farbschrift()", 30) } var farbsatz = 1;
+                                function farbtauscher() { farben = farbbibliothek[farbsatz]; while (farben.length < text.length) { farben = farben.concat(farben) } farbsatz = Math.floor(Math.random() * (farbbibliothek.length - 0.0001)) } setInterval("farbtauscher()", 500);
+                                text = " HUTECH SHOES"; //h
+                                string2array(text);
+                                divserzeugen();
+                             </script>
+                            
+                        </div>
+                    </div>
+        <div class="navbar-collapse collapse">
+            <div class="dropdown">
+                <button class="w3-bar-item w3-button " style="color:black">Danh Mục</button>
+                <div class="dropdown-content">
+                    <a href="@Url.Action("Index","Home")">Giày Mới Nhất</a>
+                    <a href="@Url.Action("Spgiaynam","GiayNam")">Giầy Nam</a>
+                    <a href="@Url.Action("Spgiaynu","GiayNu")">Giầy Nữ</a>
+
+
+                </div>
+            </div>
+            <div class="w3-dropdown-hover">
+                <button class="w3-bar-item w3-button " style="color:black">Thương Hiệu</button>
+                <div class="w3-dropdown-content w3-bar-block w3-card-4 ">
+                    @Html.Action("Nhasxnam", "GiayNam")
+                </div>
+            </div>
+            <a href="@Url.Action("Spkm","Home")" class="w3-bar-item w3-button" style="color:black">Sản Phẩm KM</a>
+            <a href="@Url.Action("Contact", "Home")" class="w3-bar-item w3-button" style="color:black">Liên Hệ</a>
+            @Html.Action("GioHangPartinal", "GioHang")  @*gio hàng*@
+
+    
+            </div>
+
+</div>
+            
+      
+    <div class="jumbotron" style="padding:0px;margin-top:50px; background-color:black;">
+        <div class="container text-center">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+
+                        <img src="~/Asset/User/css/images/000.jpg"  width="800" height="100">
+                        <div class="carousel-caption ">
+
+                            <h3 style="color: yellow "> <strong>Hỗ Trợ Nhiệt Tình  </strong> </h3>
+                        </div>
+                    </div>
+
+                    <div class="item">
+
+                        <img src="~/Asset/User/css/images/00.jpg" width="800" height="100">
+                        <div class="carousel-caption">
+
+                            <h3 style="color:yellow"> <strong>Phục Vụ Chu Đáo </strong> </h3>
+                        </div>
+                    </div>
+
+                    <div class="item">
+
+                        <img src="~/Asset/User/css/images/0n.jpg" width="800" height="100">
+                        <div class="carousel-caption">
+
+                            <h3 style="color:red"> <strong> Cập Nhật Mẫu Mới </strong> </h3>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+
+    </div>
+
+   
+    <div class="container body-content">
+     <article class="col-md-9">
+        @RenderBody()
+     </article>
+        <article class="container">
+            <div class="row" >
+                    <div class="col-md-3">          
+                    <div class="list-group-item ">
+                        <p class="lead" style="text-align:center">Cam Kết</p>
+                        <hr />
+                       <p><i class="fa fa-truck" style="font-size:36px;"></i>  Miễn Phí Giao Hàng</p><hr />
+                        <p><i class="fa fa-calendar" style="font-size:36px"></i> Đổi Hàng Trong 15 Ngày</p><hr />
+                        <p><i class="fa fa-check-square" style="font-size:36px;"></i> Hàng Chính Hãng 100%</p><hr />
+                        <p><i class="fa fa-thumbs-o-up" style="font-size:36px"></i>  Giá Luôn Tốt Nhất</p>
+                    </div>
+                    <br />
+                    @Html.Action("NhaSanXuat", "Home")
+                
+                </div>
+            </div>
+        </article>
+        
+     
+
+    </div>
+        <footer>
+
+            <hr />
+            <div class="logos" style="text-align:center;">
+               <img src="/Asset/User/css/images/logo1.gif" alt="" />
+                <img src="/Asset/User/css/images/logo2.gif" alt="" />
+                    <img src="/Asset/User/css/images/logo3.gif" alt="" />
+                    <img src="/Asset/User/css/images/logo4.gif" alt="" />             
+                    <img src="/Asset/User/css/images/logo5.gif" alt="" />    
+            </div>
+
+        </footer>
+    
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+</body>
+</html>

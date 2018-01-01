@@ -1,0 +1,158 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Trang Admin</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="/Asset/Admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="/Asset/Admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="/Asset/Admin/dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="/Asset/Admin/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="/Asset/Admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index", "Admin")">Trang chủ Admin</a>
+            </div>
+            <!-- /.navbar-header -->
+            <ul class="nav navbar-top-links navbar-right">
+
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li class="divider"></li>
+                        <li>
+                            <a href="@Url.Action("Login", "Admin")"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">                
+                        <li>
+                            <a href="@Url.Action("Index", "Admin")"><i class="fa fa-dashboard fa-fw"></i> Tổng quan</a>
+                        </li>
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Quản lý đặt hàng<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+
+
+                                <li>
+                                    <a href="@Url.Action("Index", "NhanHang")">Quản Lý Đơn Đặt Hàng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "KiemHang")">Kiểm Tra Đơn Hàng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "GiaoHang")">Quản Lý Giao Hàng</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "DaXong")">Hàng đã giao</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-gift"></i>Hàng hóa<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+
+                                <li>
+                                    <a href="@Url.Action("giaynam", "QuanLyGiay")">Giày Nam</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("giaynu", "QuanLyGiay")">Giày Nữ</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "HoaDon")">Hóa Đơn</a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "KhachHang")"> <i class="fa fa-users"></i>Khách Hàng</a>
+
+                        </li>
+
+                        <li>
+                            <a href=""> Cài Đặt<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="@Url.Action("Index", "NhaCungCap")">Nhà cung cấp</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "MauSac")">Màu sắc</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "LoaiGiay")">Loại giày</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "KichThuoc")">Kích thước</a>
+                                </li>
+                            </ul>
+                        <li>
+                            <a href="@Url.Action("Index", "UngDung")">Ứng Dụng</a>
+                        </li>
+
+                        </li>
+
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+        <div id="page-wrapper">
+            @RenderBody()
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="/Asset/Admin/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/Asset/Admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/Asset/Admin/vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="/Asset/Admin/vendor/raphael/raphael.min.js"></script>
+    <script src="/Asset/Admin/vendor/morrisjs/morris.min.js"></script>
+    <script src="/Asset/Admin/data/morris-data.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="/Asset/Admin/dist/js/sb-admin-2.js"></script>
+</body>
+</html>

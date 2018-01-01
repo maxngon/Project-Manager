@@ -1,0 +1,57 @@
+﻿@using WebApplication1.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Giay>
+@{
+    ViewBag.Title = "Spnhasxnu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:left">Các loại giày</h2>
+<div class="row" style="text-align:center">
+
+    <br />
+    @foreach (var giay in Model)
+    {
+
+        <div class="col-sm-4 col-lg-4 col-md-4" style="width:270px">
+            <div class="thumbnail " style="width:250px">
+                <a href="@Url.Action("Chitiet", "Home", new { id = int.Parse(giay.MaGiay) })">
+                    <img alt="@giay.TenGiay" src="~/img/@giay.HinhAnh" style="width:300px" />
+                    <div>
+
+                        <h4 style="text-align:center">
+                            @giay.TenGiay
+
+                        </h4>
+                        <p></p>
+                    </div>
+                </a>
+                <div>
+
+
+                    <h4 style="text-align: center; color: #FF0000">  Giá: @giay.GiaBan VNĐ </h4>
+
+
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+
+    }
+</div>
+<footer>
+    <div class="MenuTrang" style="text-align:center;">
+        trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action
+                         ("Spnhasxnu", new { page = page, @Stukhoa = ViewBag.TuKhoa })) <br />
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
+</footer>
+
+

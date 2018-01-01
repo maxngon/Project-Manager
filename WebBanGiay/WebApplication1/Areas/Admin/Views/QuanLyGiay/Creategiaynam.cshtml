@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <p>
+
+            Mã Giày :
+            @Html.TextBox("MaGiay")<font color=red>
+                @ViewData["loi"]
+            </font>
+        </p>
+        <p>
+
+            Mã Màu :
+            @Html.DropDownList("MaMau")<font color=red>
+             
+            </font>
+        </p>
+        <p>
+            Mã Kích Thước :
+            @Html.DropDownList("MaKichThuoc")<font color=red>
+                
+            </font>
+        </p>
+
+        <p>
+            Mã Nhà Sản Xuất:
+            @Html.DropDownList("MaNhaSanXuat")  <font color=red>
+               
+            </font>
+        </p>
+        <p>
+            Tên giày :
+            @Html.TextBox("TenGiay") <font color=red>
+                @ViewData["loi1"]
+            </font>
+        </p>
+        <p>
+            Ảnh :
+         
+            <input type="file" name="HinhAnh" /> <font color=red>
+
+               
+            </font>
+        </p>
+        <p>
+            Mô tả :
+            <br />
+            <textarea id="TextArea1" rows="5" cols="40" name="MoTa"></textarea> <font color=red>
+
+    @ViewData["loi"]
+</font>
+        </p>
+
+        <p>
+            Giá bán :
+            @Html.TextBox("GiaBan") <font color=red>
+               
+            </font>
+           
+</p>
+
+        <p>
+            Có Khuyến Mãi Hay Không :
+           <br />
+            <label for="KhuyenMai">True</label>
+            <input type="radio" name="KhuyenMai" id="True" value="True"><br>
+            <label for="female">False</label>
+            <input type="radio" name="KhuyenMai" id="False" value="False"><br>
+        </p>
+        <p>
+            Giá Khuyến Mãi :
+            @Html.TextBox("Sale") <font color=red>
+
+            </font>
+
+        </p>
+        <p>
+            Ngày cập nhật :
+            <input type="date" name="NgayCapNhat" />
+            <font color=red>
+               
+            </font>
+        </p>
+        <p> <button type="submit" class="btn btn-success">Tạo Mới</button>
+            <a href="@Url.Action("giaynam","QuanLyGiay")" class="btn btn-primary">
+                Trở Về
+            </a></p>
+    </fieldset>
+    <div> </div>
+}
+

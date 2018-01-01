@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Createloai";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <p>
+
+            Mã kích thước :
+            @Html.TextBox("MaKichThuoc")<font color=red>
+                @ViewData["loi"]
+            </font>
+        </p>
+        <p>
+
+           Mô tả kích thước :
+            @Html.TextBox("MoTaSize")<font color=red>
+                @ViewData["loi1"]
+            </font>
+        </p>
+        <p> <button type="submit" class="btn btn-success">Tạo Mới</button>
+            <a href="@Url.Action("Index","KichThuoc")" class="btn btn-primary">
+                Trở Về
+            </a></p>
+    </fieldset>
+}
+
+
+

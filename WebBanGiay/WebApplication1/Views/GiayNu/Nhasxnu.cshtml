@@ -1,0 +1,13 @@
+﻿@model IEnumerable<WebApplication1.Models.NhaSanXuat>
+
+@foreach (var item in Model)
+{
+
+
+    <a href="@Url.Action("Spnhasxnu", "GiayNu",new { id = int.Parse(item.MaNhaSanXuat) })" class="w3-bar-item w3-button">@item.TenNhaSanXuat</a>
+
+}
+
+
+
+

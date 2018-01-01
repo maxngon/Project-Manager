@@ -1,0 +1,353 @@
+﻿<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+    #DatMua a{
+        clear :both ; background-color:red;
+        color:white; width:120px; height:35px;
+        display:block; float:right;text-align:center;
+        padding-top:10px;   text-decoration:none; font-weight:bold;
+    }
+    #Datmua a:hover{
+     background-color:gray;
+     color:red;
+    }
+    p.double {
+        border-style: double;
+    }
+</style>
+<style type="text/css">
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {opacity: 0.7;}
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 100%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content, #caption {
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    
+
+   
+
+    /* The Close Button */
+    .close {
+        //position: absolute;
+        margin-top: 200px;
+        margin-right: 300px;
+        top: 15px;
+        right: 35px;
+        color: #EFFBFB;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+   
+</style>
+
+
+@{
+    ViewBag.Title = "Chitiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="text-align:left">Thông tin sản phẩm</h2>
+
+ @if (@Model.KhuyenMai == true)
+ {
+    <div class="col-sm-4 col-lg-4 col-md-4" style="text-align:left">
+        <div class="thumbnail">
+            <img id="myImg" src="~/img/@Model.HinhAnh" alt="@Model.TenGiay" width="300" height="200">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <span class="close">&times;</span>
+                <img class="modal-content" id="img01">
+                <div id="caption"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <br />
+        <h4 style="text-align:left">
+            Mã giày: @Model.MaGiay
+
+        </h4>
+        <h4 style="text-align:left">
+            Tên giày: @Model.TenGiay
+
+        </h4>
+        <h4 style="text-align:left">
+            Nhà sản xuất :@Model.NhaSanXuat.TenNhaSanXuat
+
+        </h4>
+        <h4 style="text-align:left">
+            @Model.LoaiGiay.TenLoai
+
+        </h4>
+        <hr />
+
+    </div>
+    <div>
+        <h4 style="text-align: left ">
+            Màu:
+            @Model.MauSac.TenMau
+            <br />
+            Size:
+            @Model.KichThuoc.MaKichThuoc
+            <br />
+            Mô tả size:
+            @Model.KichThuoc.MoTaSize
+        </h4>
+        <p></p>
+
+    </div>
+    <div>
+        <h4 style="text-align: left ; text-decoration: line-through; color: #FF0000" text-decoration: line-through;>
+            Giá  @Model.GiaBan VNĐ
+        </h4>
+        <p></p>
+
+    </div>
+    <div>
+        <h3 style="text-align: left ; color: #FF0000">
+            Khuyến Mãi Chỉ Còn :  @Model.Sale VNĐ
+        </h3>
+        <p></p>
+
+    </div>
+    <p class="double">
+    </p>
+
+    <div style="text-align:right">
+
+        <a href="@Url.Action("themgiohang","GioHang",new { @imagiay=int.Parse(@Model.MaGiay),@strUrl=Request.Url.ToString()})" style="font-size:24px" class="btn btn-outline btn-primary">
+            Đặt Hàng <i class="fa fa-cart-plus"></i>
+        </a>
+
+    </div>
+    <ul class="nav nav-tabs">
+
+        <li class="active"><a data-toggle="tab" href="#Mota">Mô tả</a></li>
+        <li><a data-toggle="tab" href="#binhluan">Bình luận</a></li>
+        <li><a data-toggle="tab" href="#sptt">Sản Phẩm Tương Tự</a></li>
+        <li>
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="Mota" class="tab-pane fade in active">
+            <p>@Model.MoTa</p>
+        </div>
+        <div id="binhluan" class="tab-pane fade">
+            <div class="fb-comments" data-href="https://www.facebook.com/pg/Hutech-Shoes-1909218519350386/posts/"></div>
+            <br><br>
+        </div>
+        <div id="sptt" class="tab-pane fade">
+            <p>@Html.Action("sptt", "Home", new { id = int.Parse(Model.MaNhaSanXuat) })</p>
+        </div>
+    </div>
+    // hinh phong to
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+    </script>
+
+
+ }
+@if(@Model.KhuyenMai == false)
+{ 
+<div class="col-sm-4 col-lg-4 col-md-4" style="text-align:left">
+    <div class="thumbnail">
+        <img id="myImg" src="~/img/@Model.HinhAnh" alt="@Model.TenGiay" width="300" height="200">
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="img01">
+            <div id="caption"></div>
+        </div>
+    </div>
+</div>
+<div>
+    <br />
+    <h4 style="text-align:left">
+        Mã giày: @Model.MaGiay
+
+    </h4>
+    <h4 style="text-align:left">
+        Tên giày: @Model.TenGiay
+
+    </h4>
+    <h4 style="text-align:left">
+        Nhà sản xuất :@Model.NhaSanXuat.TenNhaSanXuat
+
+    </h4>
+    <h4 style="text-align:left">
+        @Model.LoaiGiay.TenLoai
+
+    </h4>
+    <hr />
+
+</div>
+<div>
+    <h4 style="text-align: left ">
+        Màu:
+        @Model.MauSac.TenMau
+        <br />
+        Size:
+        @Model.KichThuoc.MaKichThuoc
+        <br />
+        Mô tả size:
+        @Model.KichThuoc.MoTaSize
+    </h4>
+    <p></p>
+
+</div>
+<div>
+    <h4 style="text-align: left; color: #FF0000">
+        Giá  @Model.GiaBan VNĐ
+    </h4>
+    <p></p>
+
+</div>
+<div>
+
+    <p></p>
+
+</div>
+<p class="double">
+
+    
+</p>
+
+<div style="text-align:right">
+
+    <a href="@Url.Action("themgiohang","GioHang",new { @imagiay=int.Parse(@Model.MaGiay),@strUrl=Request.Url.ToString()})" style="font-size:24px" class="btn btn-outline btn-primary">
+        Đặt Hàng <i class="fa fa-cart-plus"></i>
+    </a>
+
+</div>
+<ul class="nav nav-tabs">
+
+    <li class="active"><a data-toggle="tab" href="#Mota">Mô tả</a></li>
+    <li><a data-toggle="tab" href="#binhluan">Bình luận</a></li> 
+    <li><a data-toggle="tab" href="#sptt">San Pham tuong tu</a></li>
+    <li>
+        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
+    </li>
+</ul>
+<div class="tab-content">
+    <div id="Mota" class="tab-pane fade in active">
+        <p>@Model.MoTa</p>
+    </div>
+    <div id="binhluan" class="tab-pane fade">
+        <div class="fb-comments" data-href="https://www.facebook.com/pg/Hutech-Shoes-1909218519350386/posts/"></div>
+        <br><br>
+    </div>
+    <div id="sptt" class="tab-pane fade">
+        <p>@Html.Action("sptt", "Home", new { id = int.Parse(Model.MaNhaSanXuat) })</p>
+    </div>
+</div>
+
+<script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById('myImg');
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+        }
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+</script>
+
+}
+    
+
+
+    
+
+
+
+
+
+
+
+

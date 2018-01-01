@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Deletekt";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+
+<h2>Delete</h2>
+<fieldset>
+    <legend><font color=red>  Bạn có thật sư muốn xóa!</font>    </legend>
+    <div class="display-lable"> Mã kích thước :@Model.MaKichThuoc</div>
+    <div class="display-lable"> Mô tả  :@Model.MoTaSize</div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a href="@Url.Action("Index","KichThuoc")" class="btn btn-primary">
+            Trở Về
+        </a>
+    </p>
+}

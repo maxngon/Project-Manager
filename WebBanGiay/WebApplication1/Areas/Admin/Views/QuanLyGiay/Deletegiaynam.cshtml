@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+
+<h2>Delete</h2>
+<fieldset>
+  <legend><font color=red>  Bạn có thật sư muốn xóa!</font>    </legend>
+    <div class="display-lable"> Mã mặt hàng :@Model.MaGiay</div>
+    <div class="display-lable"> Mã màu :@Model.MaMau</div>
+    <div class="display-lable"> Mã kich thước :@Model.MaKichThuoc</div>
+    <div class="display-lable"> Mả nhà sản xuất :@Model.MaNhaSanXuat</div>
+    <div class="display-lable"> Mả loại :@Model.MaLoai</div>
+    <div class="display-lable"> Tên mặt hàng :@Model.TenGiay</div>
+    <div class="display-lable"> <img src="~/img/@Model.HinhAnh" style="width:200px;height:200px" /></div>
+    <div class="display-lable"> Mô tả:@Model.MoTa</div>
+    <div class="display-lable"> Giá:@Model.GiaBan</div>
+    <div class="display-lable"> Giá:@Model.Sale</div>
+    <div class="display-lable"> Ngày cập nhật:@Model.NgayCapNhat</div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a href="@Url.Action("giaynam","QuanLyGiay")" class="btn btn-primary">
+            Trở Về
+        </a>
+    </p>
+}
+

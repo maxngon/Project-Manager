@@ -1,0 +1,100 @@
+﻿@using WebApplication1.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<KhachHang>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+
+<h2> Quản lý khách hàng </h2>
+<div class="panel-heading">
+
+</div>
+<!-- /.panel-heading -->
+<div class="panel-body">
+    @using (Html.BeginForm("KetQuaTimKiemKH", "TimKiem", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="txttimkiem" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+            <!-- /input-group -->
+    }
+    <br />
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Mã khách hàng</th>
+                    <th>Tên khách hàng</th>
+                    <th>Email</th>
+                    <th>Số điện thoại</th>
+                    <th>Ngày sinh</th>
+                    <th>Địa chỉ</th>
+                    <th>Tên đăng nhập</th>
+                    <th>Mật khẩu</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="odd gradeX">
+
+                        <td>
+                            @item.MaKhachHang
+                        </td>
+                        <td>
+                            @item.TenKhachHang
+                        </td>
+
+                        <td>
+                                @item.Email                      
+                        </td>
+                        <td>
+                            @item.SDT
+                        </td>
+                        <td>
+                            @item.NgaySinh
+                        </td>
+                        <td>
+                            @item.DiaChi
+                        </td>
+                        <td>
+                            @item.ID
+                        </td>
+                        <td>
+                            @item.Pasword
+                        </td>
+
+                    </tr>
+                }         
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>
+<!-- /.panel-body -->
+<footer>
+    <div class="MenuTrang" style="text-align:center;">
+        trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action
+             ("Index", new { page = page })) <br />
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
+</footer>
+                   
+

@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ @using (Html.BeginForm())
+ {
+    <h4 style="color:red;text-align:center">@ViewBag.Thongbao</h4>
+    <h3 style="text-align:center">Đăng Nhập</h3>
+    @Html.ValidationSummary(true)
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-offset-3 col-md-3">
+                    <div class="form-login">
+
+                        <input type="text" class="form-control input-sm chat-input" placeholder="username" name="taikhoan" />
+                        <br/>
+                        <input type="password" class="form-control input-sm chat-input" placeholder="password" name="matkhau" />
+                        <br/>
+                        <div class="wrapper">
+                            <span class="group-btn">
+                                <button type="submit" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+ }
+

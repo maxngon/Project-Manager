@@ -1,0 +1,96 @@
+﻿@using WebApplication1.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Giay>
+@{
+    ViewBag.Title = "giaynu";
+    Layout = "~/Areas/Admin/Views/Shared/View1.cshtml";
+}
+<h2>Quản lý giày Nữ</h2>
+<div class="page-wrapper">
+    @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-3">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Nhập tên sản phẩm" name="txttimkiem" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+            <!-- /input-group -->
+    }
+    <table width="100" class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+
+                <th>
+                    Tên Giày
+                </th>
+                <th>
+                    Nhà cung cấp
+                </th>
+                <th>
+                    Hình Ảnh
+                </th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="odd gradeX">
+
+                    <td>
+                        @item.TenGiay
+                    </td>
+                    <td>
+
+                        @item.NhaSanXuat.TenNhaSanXuat
+                    </td>
+                    <td>
+
+                        <img src="~/img/@item.HinhAnh" width="100">
+                    </td>
+
+                    <td>
+
+                        <a href="@Url.Action("Editgiaynu", new { id = int.Parse(item.MaGiay) })" class="btn btn-primary">
+                            Sửa
+                        </a>
+                        <a href="@Url.Action("Detailsgiaynu", new { id = int.Parse(item.MaGiay) }) " class=" btn btn-primary">
+                            Chi tiết
+                        </a>
+                        <a href="@Url.Action("Deletegiaynu", new { id = int.Parse(item.MaGiay) })" class="btn btn-danger">
+                            Xóa
+                        </a>
+                    </td>
+                </tr>
+            }
+    </table>
+    <a href="@Url.Action("Creategiaynu", "QuanLyGiay") " class="btn btn-success">
+        Thêm giày
+    </a>
+
+
+</div>
+<footer>
+    <div class="MenuTrang" style="text-align:center;">
+        trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action
+             ("giaynu", new { page = page })) <br />
+    </div>
+    <style>
+        .MenuTrang li {
+            display: inline;
+        }
+    </style>
+
+</footer>
+
+

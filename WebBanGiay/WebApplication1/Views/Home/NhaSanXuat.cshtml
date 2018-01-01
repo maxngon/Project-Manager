@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebApplication1.Models.NhaSanXuat>
+
+<div class="list-group">
+    <div class="list-group-item">
+        <p class="lead" style="text-align:center; margin-left:50px;">Hãng Giày</p>
+        </div>
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("Sptheonhasx", "Home", new { id = int.Parse(item.MaNhaSanXuat) })" class="list-group-item">
+                @item.TenNhaSanXuat
+            </a>
+        }
+
+
+    </div>

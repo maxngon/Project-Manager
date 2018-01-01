@@ -1,0 +1,47 @@
+﻿@using WebApplication1.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebApplication1.Models.Giay>
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2 style="text-align:left">
+    Giày mới nhất
+</h2>
+
+<div class="row" style="text-align:center">
+    @foreach (var giay in Model )
+{
+
+
+    <div class="col-sm-4 col-lg-4 col-md-4" style="width:270px">
+        <div class="thumbnail " style="width:250px">
+            <a href="@Url.Action("Chitiet", "Home", new { id = int.Parse(giay.MaGiay) })">
+                <img alt="@giay.TenGiay" src="~/img/@giay.HinhAnh" style="width:300px" />
+                <div>
+
+                    <h4 style="text-align:center">
+                        @giay.TenGiay
+                      
+                    </h4>
+                    <p></p>
+                </div>
+            </a>
+            <div>
+
+
+                <h4 style="text-align: center; color: #FF0000">  Giá: @giay.GiaBan VNĐ </h4>
+
+
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+
+}
+</div>
+
+
+    <script type="text/javascript">
+        (function (d, s, id) { var z = d.createElement(s); z.type = "text/javascript"; z.id = id; z.async = true; z.src = "//static.zotabox.com/a/b/ab0b95cb6a4d062fe3fb9c5c2036a5a6/widgets.js"; var sz = d.getElementsByTagName(s)[0]; sz.parentNode.insertBefore(z, sz) }(document, "script", "zb-embed-code"))
+    </script>
